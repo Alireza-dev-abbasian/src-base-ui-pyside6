@@ -221,8 +221,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.addWidget(self.contentTopTitle)
 
         self.combo_box_connect = QComboBox(self.contentTopTitleFrame)
-        self.combo_box_connect.addItem("")
-        self.combo_box_connect.addItem("")
         self.combo_box_connect.setObjectName(u"combo_box_connect")
         self.combo_box_connect.setMinimumSize(QSize(100, 30))
         self.combo_box_connect.setMaximumSize(QSize(100, 16777215))
@@ -408,9 +406,6 @@ class Ui_MainWindow(object):
         self.btn_menu_info.setText(QCoreApplication.translate("MainWindow", u"Info", None))
         self.btn_menu_settings.setText(QCoreApplication.translate("MainWindow", u"Settings", None))
         self.contentTopTitle.setText(QCoreApplication.translate("MainWindow", u"Modern Gui Python APP", None))
-        self.combo_box_connect.setItemText(0, QCoreApplication.translate("MainWindow", u"Test1", None))
-        self.combo_box_connect.setItemText(1, QCoreApplication.translate("MainWindow", u"Test2", None))
-
         self.combo_box_connect.setPlaceholderText(QCoreApplication.translate("MainWindow", u"connect", None))
 #if QT_CONFIG(tooltip)
         self.btn_minimize.setToolTip(QCoreApplication.translate("MainWindow", u"Minimize", None))

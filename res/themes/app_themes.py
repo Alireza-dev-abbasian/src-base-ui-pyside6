@@ -104,7 +104,7 @@ def setupStyleOne(themes):
     	background-position: left center;
         background-repeat: no-repeat;
     	border: none;
-    	border-left: 20px solid transparent;
+    	border-left: 18px solid transparent;
         background-image: url(:/icons/res/icons/icon_menu.svg);
     	text-align: left;
     	padding-left: 44px;

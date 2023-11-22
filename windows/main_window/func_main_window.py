@@ -1,5 +1,6 @@
 from qt_core import *
 from core.functions import GlobalFunctions
+from core.serial_port import SerialPort
 
 class SetupFunctionWindow:
         
@@ -9,6 +10,7 @@ class SetupFunctionWindow:
             self.settings = main_window.settings
             self.themes = main_window.themes
             self.setupSignals()
+            self.fillConnectionPortData()
                     
         def mousePressEvent(self, event):
             if event.buttons() == Qt.LeftButton:
@@ -67,19 +69,23 @@ class SetupFunctionWindow:
         
         def on_combo_box_connect_changed(self, index):
             combo_box = self.ui.combo_box_connect
-            if combo_box.currentIndex() == -1:  # Check if no item is selected
-                combo_box.setCurrentText('connect')
-                self.ui.combo_box_connect.setStyleSheet(f"""
-                #combo_box_connect {{
-                    background-color:{self.themes["app_color"]["green"]};
-                }}""")
-            else:
-                self.ui.combo_box_connect.setStyleSheet(f"""
+            selected_name = combo_box.currentText()
+
+            is_connected, message = SerialPort.connect_to_serial_port(selected_name)
+            print(message)
+
+            if (is_connected):
+                combo_box.setStyleSheet(f"""
                 #combo_box_connect {{
                     background-color:{self.themes["app_color"]["red"]};
                 }}""")
-
-            print(self.ui.combo_box_connect.styleSheet())
+            else:
+                combo_box.setCurrentIndex(-1)
+                combo_box.setCurrentText('connect')
+                combo_box.setStyleSheet(f"""
+                #combo_box_connect {{
+                    background-color:{self.themes["app_color"]["green"]};
+                }}""")
 
         def set_page(self, page):
             self.ui.load_pages.pages.setCurrentWidget(page)
@@ -134,7 +140,10 @@ class SetupFunctionWindow:
                 else:
                     btn.setStyleSheet("")
                     
-            
+        def fillConnectionPortData(self):
+            ports_info = SerialPort.get_serial_ports_info()
+            port_names = [item.get('name', '') for item in ports_info]
+            self.ui.combo_box_connect.addItems(port_names)
 
 
 

@@ -26,6 +26,7 @@ class SetupUIWindow:
         self.ui.contentTopTitle.setText(self.settings["app_name"])
         self.ui.version.setText(self.settings["version"])
         self.ui.credits_label.setText(self.settings["copyright"])
+        self.ui.titleLeftApp.setText(self.settings["brand"])
 
         # REMOVE TITLE BAR
         if self.settings["custom_title_bar"]:

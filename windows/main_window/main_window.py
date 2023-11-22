@@ -37,3 +37,5 @@ class MainWindow(QMainWindow):
         themes = Themes()
         self.themes = themes.items
 
+        self.drag_start_position = None
+
